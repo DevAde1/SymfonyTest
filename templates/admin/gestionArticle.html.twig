@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion Article{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">Gestion des articles</h1>
+
+
+    <div class="container">
+    <a href="{{ path('admin_article_new') }}" class="btn btn-primary my-2"> New Article</a>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Contenu</th>
+                    <th>Date de création</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title }}</td>
+                        <td><img src="{{ article.image }}" alt="" width="50"></td>
+                        <td>{{ article.content }}</td>
+                        <td>{{ article.createdAt|date('d/m/y à H:i:s') }}</td>
+                        <td>
+                            <a href="{{ path('admin_article_update', {id: article.id}) }}" class="text-warning">edit</a>
+                            <a href="{{ path('admin_article_delete', {id: article.id}) }}" class="text-danger">delete</a>
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+        
+        </table>
+    
+    
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajout Categorie{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-3">Ajouter une Categorie</h1>
+
+    <div class="container">
+        {{ form_start(form,{
+            attr: {
+                novalidate: 'novalidate'
+            }
+        }) }}
+        
+            {{ form_row(form.title, {
+                label: 'Titre',
+            }) }}
+
+            {{ form_row(form.description, {
+                label: 'Description'
+            }) }}
+
+
+            <button type="submit" class="btn btn-primary">Ajouter un catégorie</button>
+
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">Les Articles</h1>
+<div class="container">
+    <section class="row gx-2">
+        {% for item in articles %}
+            <div class="col-md-3 my-3">
+                <div class="card p-2">
+                    <img src="{{ item.image }}" alt="" class="img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <div class="my-2">Ecrit le {{ item.createdAt|date('d/m/Y à H:i:s') }} dans la catégorie : {{ item.content|slice(0, 50) }}</div>
+                        <p class="card-text">{{ item.content|slice(0, 50) }}</p>
+                        <div class="text-center">
+                            <a href="{{ path('article_show', {id: item.id}) }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

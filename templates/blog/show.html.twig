@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">{{ article.title }}</h1>
+    <div class="container">
+    <div class="mx-auto col-8">
+        <div class="text-center">
+            <img src="{{ article.image }}" alt="" width="400">
+        </div>
+        <p class="my-2">{{ article.content }}</p>
+        <p class="my-4 text-end">{{ article.category.title }}</p>
+        <p class="my-4 text-end">Ecrit le {{ article.createdAt|date('d/m/Y à H:i:s') }}</p>
+    </div>
+    
+    <h2 class="text-center mt-5">Commentaires</h2>
+
+    <section>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th class="col-3">Utilisateur/date</th>
+                    <th class="col-9">Commentaire</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for comment in article.comments %}
+                <tr>
+                    <td>{{ comment.author }} <br> <small>{{ comment.createdAt|date('d/mY à H:i:s') }}</small></td>
+                    <td>{{ comment.content }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    
+    
+    
+    
+    
+    </div>
+
+    
+{% endblock %}
